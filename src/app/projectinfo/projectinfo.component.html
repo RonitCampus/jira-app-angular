@@ -1,0 +1,120 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Infocepts</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+      <li><a href="#">Select a project from dropdown </a></li>
+      <li class="active"><select class="select-proj" id="select" (change)="onProjectChange($event)">
+              <option value="0">Select a Project</option>
+              <option *ngFor="let project of projects" [value]="project.projectid">{{project.projectname}}</option>
+              </select>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<block-ui>
+  <!--<div class="container">
+    <div class="row">
+      <form class="form-horizontal">
+        <fieldset>
+          <div class="form-group">
+            <label for="select" class="col-lg-2 control-label"><b class="ptext">Select a Project</b></label>
+            <div class="col-lg-3">
+              <!-- Select option Binding
+              <select class="form-control" id="select" (change)="onProjectChange($event)">
+              <option value="0">Select a Project</option>
+              <option *ngFor="let project of projects" [value]="project.projectid">{{project.projectname}}</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <br>
+  </div> -->
+
+  <div class="container-fluid" [hidden]="IssuesForProject.length==0">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <b>{{selectedProjectName + ' Report'}}</b>
+        <div class="pull-right">
+          <div class="btn-group">
+            <a href="{{ serverAddress + '/downloadProjectInfo/' + selectedProject }}" type="button" class="btn btn-info btn-xs"> Download Report </a>
+          </div>
+        </div>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-hover table-condensed">
+            <thead>
+              <tr>
+                <th class="tbl-issuetype">Issue Type</th>
+                <!--<th>ID</th>-->
+                <th class="tbl-summary">Summary</th>
+                <!--<th>Assignee</th>-->
+                <th>Assigned<br>To</th>
+                <th>Estimated<br>Start Date</th>
+                <th>Estimated<br>End Date</th>
+                <th>Actual <br>Start Date</th>
+                <th>Actual <br>End Date</th>
+                <th>Time <br>Estimated</th>
+                <th>Timeworked</th>
+                <th>Time <br>Remaining</th>
+                <th>Status</th>
+                <th class="overrun">Effort<br>Overrun</th>
+                <th class="overrun">Schedule<br>Overrun</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of IssuesForProject">
+                <td class="tbl-issuetype" [ngClass]="check(p.issuetype)"><b>{{ p.issuetype }}</b></td>
+                <!--<td>{{ p.id }}</td>-->
+                <td class="tbl-summary">{{ p.summary }}</td>
+                <!--<td>{{p.creator}}</td>-->
+                <td>{{ p.assignedto }}</td>
+                <td>{{ p.estimatedstartdate }}</td>
+                <td>{{ p.estimatedenddate }}</td>
+                <td>{{ p.actualstartdate }}</td>
+                <td>{{ p.actualenddate }}</td>
+                <td>{{ p.timeoriginalestimate/3600 | number : '1.1-1' }} hrs</td>
+                <td>{{ p.timespent/3600 | number:'1.1-1' }} hrs</td>
+                <td>{{ p.timeestimate/3600 | number : '1.1-1' }} hrs</td>
+                <td>{{ p.issuestatus }}</td>
+                <td>
+                  <div class="center-block overrun" [ngClass]="p.effortoverrun">&nbsp;</div>
+                </td>
+                <td>
+                  <div class="center-block overrun" [ngClass]="p.scheduleoverrun">&nbsp;</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.table-responsive -->
+      </div>
+      <!-- /.panel-body -->
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="container" [hidden]="selectedProject !== 0">
+    <div class="jumbotron">
+      <h3 class="text-center text-info">Select a Project from dropdown above.</h3>
+    </div>
+  </div>
+
+  <div class="container" [hidden]="selectedProject == 0">
+    <div class="jumbotron" [hidden]="IssuesForProject.length!==0">
+      <h3 class="text-center text-success">This project contains no data to display.</h3>
+    </div>
+  </div>
+
+</block-ui>
+<simple-notifications [options]="options"></simple-notifications>

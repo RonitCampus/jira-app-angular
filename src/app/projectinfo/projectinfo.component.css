@@ -1,0 +1,46 @@
+.tbl-summary {
+  word-wrap: break-word;
+  max-width: 120px !important;
+}
+
+.tbl-issuetype {
+  min-width: 70px;
+  max-width: 70px;
+  padding-right: 15px;
+}
+
+table {
+  border: 0px solid gray;
+}
+
+.div-tbl {
+  height: 100vh;
+}
+
+.ptext {
+  font-size: 15px;
+}
+
+.flag-color-red {
+  background-color: red;
+  border: 1px solid brown;
+}
+
+.flag-color-green {
+  background-color: green;
+  border: 1px solid darkgreen;
+}
+
+.flag-color-yellow {
+  background-color: yellow;
+  border: 1px solid yellowgreen;
+}
+
+.overrun {
+  width: 30px;
+}
+
+.select-proj {
+  margin-top: 12px !important;
+  width: 180px;
+}
