@@ -40,7 +40,7 @@
       <div class="panel-heading">
         <b>{{selectedProjectName + ' Report'}}</b>
         <div class="pull-right">
-          <div class="btn-group">
+          <div class="btn-group" (^click)="onReportDownload()">
             <a href="{{ serverAddress + '/downloadProjectInfo/' + selectedProject }}" type="button" class="btn btn-info btn-xs"> Download Report </a>
           </div>
         </div>
@@ -51,21 +51,21 @@
           <table class="table table-hover table-condensed">
             <thead>
               <tr>
-                <th class="tbl-issuetype">Issue Type</th>
+                <th class="tbl-issuetype text-center">Issue Type</th>
                 <!--<th>ID</th>-->
-                <th class="tbl-summary">Summary</th>
+                <th class="tbl-summary text-center">Summary</th>
                 <!--<th>Assignee</th>-->
-                <th>Assigned<br>To</th>
-                <th>Estimated<br>Start Date</th>
-                <th>Estimated<br>End Date</th>
-                <th>Actual <br>Start Date</th>
-                <th>Actual <br>End Date</th>
-                <th>Time <br>Estimated</th>
-                <th>Timeworked</th>
-                <th>Time <br>Remaining</th>
-                <th>Status</th>
-                <th class="overrun">Effort<br>Overrun</th>
-                <th class="overrun">Schedule<br>Overrun</th>
+                <th class="text-center">Assigned<br>To</th>
+                <th class="text-center">Estimated<br>Start Date</th>
+                <th class="text-center">Estimated<br>End Date</th>
+                <th class="text-center">Actual <br>Start Date</th>
+                <th class="text-center">Actual <br>End Date</th>
+                <th class="text-center">Time <br>Estimated</th>
+                <th class="text-center">Timeworked</th>
+                <th class="text-center">Time <br>Remaining</th>
+                <th class="text-center">Status</th>
+                <th class="overrun text-center">Effort<br>Overrun</th>
+                <th class="overrun text-center">Schedule<br>Overrun</th>
               </tr>
             </thead>
             <tbody>
@@ -74,15 +74,15 @@
                 <!--<td>{{ p.id }}</td>-->
                 <td class="tbl-summary">{{ p.summary }}</td>
                 <!--<td>{{p.creator}}</td>-->
-                <td>{{ p.assignedto }}</td>
-                <td>{{ p.estimatedstartdate }}</td>
-                <td>{{ p.estimatedenddate }}</td>
-                <td>{{ p.actualstartdate }}</td>
-                <td>{{ p.actualenddate }}</td>
-                <td>{{ p.timeoriginalestimate/3600 | number : '1.1-1' }} hrs</td>
-                <td>{{ p.timespent/3600 | number:'1.1-1' }} hrs</td>
-                <td>{{ p.timeestimate/3600 | number : '1.1-1' }} hrs</td>
-                <td>{{ p.issuestatus }}</td>
+                <td class="text-center">{{ p.assignedto }}</td>
+                <td class="text-center">{{ p.estimatedstartdate }}</td>
+                <td class="text-center">{{ p.estimatedenddate }}</td>
+                <td class="text-center">{{ p.actualstartdate }}</td>
+                <td class="text-center">{{ p.actualenddate }}</td>
+                <td class="text-center">{{ p.timeoriginalestimate/3600 | number : '1.1-1' }} hrs</td>
+                <td class="text-center">{{ p.timespent/3600 | number:'1.1-1' }} hrs</td>
+                <td class="text-center">{{ p.timeestimate/3600 | number : '1.1-1' }} hrs</td>
+                <td class="text-center">{{ p.issuestatus }}</td>
                 <td>
                   <div class="center-block overrun" [ngClass]="p.effortoverrun">&nbsp;</div>
                 </td>

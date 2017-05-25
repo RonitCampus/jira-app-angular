@@ -67,7 +67,7 @@ export class ProjectinfoComponent implements OnInit {
     this.selectedProjectName = event.target.options[event.target.selectedIndex].text
     if (event.target.value === 0) { this.selectedProject = 0; return; }
     this.selectedProject = event.target.value
-    this.blockUI.start('Please wait fetching data...');
+    this.blockUI.start('Please be patient, fetching data...');
     this._jiraService.getIssuesforProjct(event.target.value)
       .subscribe((data) => {
         this.IssuesForProject = data;
@@ -99,4 +99,7 @@ export class ProjectinfoComponent implements OnInit {
     this._notificationService.error('Error fetching data from server', err);
   }
 
+  onReportDownload() {
+    alert('If the project has lot of data, Report generation might take some time..');
+  }
 }

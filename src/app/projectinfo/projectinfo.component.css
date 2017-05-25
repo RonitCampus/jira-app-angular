@@ -31,9 +31,9 @@ table {
   border: 1px solid darkgreen;
 }
 
-.flag-color-yellow {
-  background-color: yellow;
-  border: 1px solid yellowgreen;
+.flag-color-purple {
+  background-color: rebeccapurple;
+  border: 1px solid purple;
 }
 
 .overrun {
